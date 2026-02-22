@@ -5,7 +5,7 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-7xl font-bold text-white mb-4">
-            Markets
+            Allorca
           </h1>
           <p className="text-2xl text-blue-200 mb-8">
             Empowering Smarter Investing for Everyone
