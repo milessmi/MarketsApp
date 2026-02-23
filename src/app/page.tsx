@@ -73,6 +73,82 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Beta Disclaimer */}
+        <div className="mt-20 max-w-4xl mx-auto">
+          <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 text-center">
+            <p className="text-yellow-500 font-semibold mb-2">⚠️ Beta Version</p>
+            <p className="text-gray-300 text-sm">
+              Allorca is currently in beta. Your data is encrypted and secure, but this platform is for educational purposes only. 
+              Paper trading only - do not invest real money.
+            </p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-20 pt-12 border-t border-gray-800">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {/* About */}
+              <div>
+                <h4 className="text-white font-bold mb-4">About Allorca</h4>
+                <p className="text-gray-400 text-sm">
+                  AI-driven investment platform empowering smarter investing for everyone.
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-white font-bold mb-4">Platform</h4>
+                <div className="space-y-2">
+                  <Link href="/sign-up" className="block text-gray-400 hover:text-green-500 text-sm transition">
+                    Get Started
+                  </Link>
+                  <Link href="/sign-in" className="block text-gray-400 hover:text-green-500 text-sm transition">
+                    Sign In
+                  </Link>
+                </div>
+              </div>
+
+              {/* Partnership */}
+              <div>
+                <h4 className="text-white font-bold mb-4">Partnership</h4>
+                <p className="text-gray-400 text-sm">
+                  USC Stevens Center for Innovation
+                </p>
+                <p className="text-gray-400 text-sm mt-2">
+                  Marshall School of Business
+                </p>
+              </div>
+            </div>
+
+            {/* Team */}
+            <div className="py-6 border-t border-gray-800">
+              <p className="text-center text-gray-400 text-sm mb-3">
+                Built by <span className="text-white font-semibold">Miles Smith</span>
+              </p>
+              <div className="flex justify-center gap-6 text-sm text-gray-400">
+                <span>Co-founders: 
+                  <span className="text-gray-300"> Vaska Wysocki</span>, 
+                  <span className="text-gray-300"> Aaniya Ahuja</span>, 
+                  <span className="text-gray-300"> Evan Inrig</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Copyright */}
+            <div className="pt-6 border-t border-gray-800 text-center">
+              <p className="text-gray-500 text-sm">
+                © {new Date().getFullYear()} Allorca. All rights reserved.
+              </p>
+              <div className="flex justify-center gap-6 mt-3 text-xs text-gray-500">
+                <a href="#" className="hover:text-gray-400 transition">Privacy Policy</a>
+                <a href="#" className="hover:text-gray-400 transition">Terms of Service</a>
+                <a href="#" className="hover:text-gray-400 transition">Contact</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   )
