@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  
+  // Onboarding status
+  onboardingComplete Boolean @default(false)
+  
+  // Survey responses
+  investmentGoal         String?
+  timeHorizon           String?
+  riskReaction          String?
+  riskAttitude          String?
+  fluctuationComfort    String?
+  incomeStability       String?
+  emergencyFund         String?
+  investmentPercentage  String?
+  experienceLevel       String?
+  previousInvestments   String[] // Array for multi-select
+  investingMindset      String?
+  managementPreference  String?
+  
+  // Calculated scores
+  riskScore        Int    @default(50)
+  portfolioType    String @default("BALANCED")
+  disciplineScore  Int    @default(0)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  portfolios Portfolio[]
+  
+  @@index([clerkId])
+  @@index([email])
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  totalValue  Float    @default(10000) // Start with $10k paper money
+  riskScore   Float    @default(50)
+  isActive    Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  positions Position[]
+  
+  @@index([userId])
+}
+
+model Position {
+  id           String @id @default(cuid())
+  portfolioId  String
+  symbol       String
+  quantity     Float
+  averageCost  Float
+  currentPrice Float
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  portfolio Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  
+  @@index([portfolioId])
+  @@unique([portfolioId, symbol])
+}
+
+model EducationProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  courseId    String
+  courseName  String
+  progress    Int      @default(0) // 0-100
+  completed   Boolean  @default(false)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([userId])
+  @@unique([userId, courseId])
+}
