@@ -23,6 +23,7 @@ export default function OnboardingPage() {
     previousInvestments: [] as string[],
     investingMindset: '',
     managementPreference: '',
+    startingAmount: 10000, // Add this
   })
 
   const handleSaveForLater = async () => {
@@ -225,78 +226,100 @@ export default function OnboardingPage() {
             </div>
           )}
 
-          {/* Step 3 */}
-          {step === 3 && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white">Financial Situation</h2>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-300">
-                  How stable is your income?
-                </label>
-                <select
-                  className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
-                  value={formData.incomeStability}
-                  onChange={(e) => setFormData({...formData, incomeStability: e.target.value})}
-                >
-                  <option value="">Select...</option>
-                  <option value="unstable">Very unstable</option>
-                  <option value="somewhat">Somewhat stable</option>
-                  <option value="stable">Stable</option>
-                  <option value="very-stable">Very stable</option>
-                </select>
-              </div>
+{/* Step 3 */}
+{step === 3 && (
+  <div className="space-y-6">
+    <h2 className="text-2xl font-bold text-white">Financial Situation</h2>
+    
+    <div>
+      <label className="block text-sm font-medium mb-2 text-gray-300">
+        How stable is your income?
+      </label>
+      <select
+        className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
+        value={formData.incomeStability}
+        onChange={(e) => setFormData({...formData, incomeStability: e.target.value})}
+      >
+        <option value="">Select...</option>
+        <option value="unstable">Very unstable</option>
+        <option value="somewhat">Somewhat stable</option>
+        <option value="stable">Stable</option>
+        <option value="very-stable">Very stable</option>
+      </select>
+    </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-300">
-                  Do you have an emergency fund (3–6 months expenses)?
-                </label>
-                <select
-                  className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
-                  value={formData.emergencyFund}
-                  onChange={(e) => setFormData({...formData, emergencyFund: e.target.value})}
-                >
-                  <option value="">Select...</option>
-                  <option value="no">No</option>
-                  <option value="partial">Partially</option>
-                  <option value="yes">Yes</option>
-                </select>
-              </div>
+    <div>
+      <label className="block text-sm font-medium mb-2 text-gray-300">
+        Do you have an emergency fund (3–6 months expenses)?
+      </label>
+      <select
+        className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
+        value={formData.emergencyFund}
+        onChange={(e) => setFormData({...formData, emergencyFund: e.target.value})}
+      >
+        <option value="">Select...</option>
+        <option value="no">No</option>
+        <option value="partial">Partially</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2 text-gray-300">
-                  What percentage of your income can you comfortably invest monthly?
-                </label>
-                <select
-                  className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
-                  value={formData.investmentPercentage}
-                  onChange={(e) => setFormData({...formData, investmentPercentage: e.target.value})}
-                >
-                  <option value="">Select...</option>
-                  <option value="<5">Less than 5%</option>
-                  <option value="5-10">5–10%</option>
-                  <option value="10-20">10–20%</option>
-                  <option value="20+">20%+</option>
-                </select>
-              </div>
+    <div>
+      <label className="block text-sm font-medium mb-2 text-gray-300">
+        What percentage of your income can you comfortably invest monthly?
+      </label>
+      <select
+        className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
+        value={formData.investmentPercentage}
+        onChange={(e) => setFormData({...formData, investmentPercentage: e.target.value})}
+      >
+        <option value="">Select...</option>
+        <option value="<5">Less than 5%</option>
+        <option value="5-10">5–10%</option>
+        <option value="10-20">10–20%</option>
+        <option value="20+">20%+</option>
+      </select>
+    </div>
 
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setStep(2)}
-                  className="flex-1 bg-gray-800 text-white py-3 rounded-lg font-semibold hover:bg-gray-700 border border-gray-700 transition"
-                >
-                  Back
-                </button>
-                <button
-                  onClick={() => setStep(4)}
-                  disabled={!formData.incomeStability || !formData.emergencyFund || !formData.investmentPercentage}
-                  className="flex-1 bg-green-500 text-black py-3 rounded-lg font-semibold hover:bg-green-600 disabled:bg-gray-700 disabled:text-gray-500 transition"
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
+    <div>
+      <label className="block text-sm font-medium mb-2 text-gray-300">
+        Choose your starting paper trading balance
+      </label>
+      <select
+        className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white"
+        value={formData.startingAmount}
+        onChange={(e) => setFormData({...formData, startingAmount: Number(e.target.value)})}
+      >
+        <option value={100}>$100</option>
+        <option value={500}>$500</option>
+        <option value={1000}>$1,000</option>
+        <option value={2500}>$2,500</option>
+        <option value={5000}>$5,000</option>
+        <option value={10000}>$10,000 (Recommended)</option>
+        <option value={15000}>$15,000</option>
+        <option value={25000}>$25,000</option>
+        <option value={50000}>$50,000</option>
+      </select>
+      <p className="text-xs text-gray-500 mt-1">This is paper money for practice - not real funds</p>
+    </div>
+
+    <div className="flex gap-4">
+      <button
+        onClick={() => setStep(2)}
+        className="flex-1 bg-gray-800 text-white py-3 rounded-lg font-semibold hover:bg-gray-700 border border-gray-700 transition"
+      >
+        Back
+      </button>
+      <button
+        onClick={() => setStep(4)}
+        disabled={!formData.incomeStability || !formData.emergencyFund || !formData.investmentPercentage || !formData.startingAmount}
+        className="flex-1 bg-green-500 text-black py-3 rounded-lg font-semibold hover:bg-green-600 disabled:bg-gray-700 disabled:text-gray-500 transition"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+)}
 
           {/* Step 4 */}
           {step === 4 && (
@@ -408,19 +431,58 @@ export default function OnboardingPage() {
 }
 
 function calculateRiskScore(data: any): number {
-  let score = 50
-
-  if (data.riskReaction === 'sell-all') score -= 20
-  if (data.riskReaction === 'sell-some') score -= 10
-  if (data.riskReaction === 'buy-more') score += 20
-
-  if (data.riskAttitude === 'avoid') score -= 15
-  if (data.riskAttitude === 'low') score -= 5
-  if (data.riskAttitude === 'moderate') score += 5
-  if (data.riskAttitude === 'high') score += 15
-
-  if (data.timeHorizon === '<1') score -= 10
-  if (data.timeHorizon === '5+') score += 10
-
-  return Math.max(0, Math.min(100, score))
-}
+    let score = 50
+  
+    // Risk tolerance (40 points max) - Most important
+    if (data.riskReaction === 'sell-all') score -= 20
+    if (data.riskReaction === 'sell-some') score -= 10
+    if (data.riskReaction === 'hold') score += 5
+    if (data.riskReaction === 'buy-more') score += 20
+  
+    if (data.riskAttitude === 'avoid') score -= 15
+    if (data.riskAttitude === 'low') score -= 5
+    if (data.riskAttitude === 'moderate') score += 5
+    if (data.riskAttitude === 'high') score += 15
+  
+    if (data.fluctuationComfort === '0-5') score -= 10
+    if (data.fluctuationComfort === '5-15') score -= 5
+    if (data.fluctuationComfort === '15-30') score += 5
+    if (data.fluctuationComfort === '30+') score += 10
+  
+    // Financial situation (20 points max)
+    if (data.incomeStability === 'unstable') score -= 10
+    if (data.incomeStability === 'somewhat') score -= 5
+    if (data.incomeStability === 'stable') score += 5
+    if (data.incomeStability === 'very-stable') score += 10
+  
+    if (data.emergencyFund === 'no') score -= 10
+    if (data.emergencyFund === 'partial') score -= 5
+    if (data.emergencyFund === 'yes') score += 5
+  
+    if (data.investmentPercentage === '<5') score -= 5
+    if (data.investmentPercentage === '20+') score += 5
+  
+    // Time horizon (15 points max)
+    if (data.timeHorizon === '<1') score -= 15
+    if (data.timeHorizon === '1-3') score -= 5
+    if (data.timeHorizon === '3-5') score += 5
+    if (data.timeHorizon === '5+') score += 15
+  
+    // Experience & Mindset (25 points max)
+    if (data.experienceLevel === 'beginner') score -= 10
+    if (data.experienceLevel === 'basic') score -= 5
+    if (data.experienceLevel === 'intermediate') score += 5
+    if (data.experienceLevel === 'advanced') score += 10
+  
+    if (data.investingMindset === 'safety') score -= 15
+    if (data.investingMindset === 'balanced') score += 0
+    if (data.investingMindset === 'aggressive') score += 10
+    if (data.investingMindset === 'high-risk') score += 15
+  
+    // Previous investments experience (bonus points)
+    const hasExperience = data.previousInvestments?.length > 1 && 
+                          !data.previousInvestments.includes('None')
+    if (hasExperience) score += 5
+  
+    return Math.max(0, Math.min(100, score))
+  }
