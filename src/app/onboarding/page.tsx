@@ -50,22 +50,23 @@ export default function OnboardingPage() {
   const handleSubmit = async () => {
     const riskScore = calculateRiskScore(formData)
     
+    console.log('Submitting data:', { ...formData, riskScore }) // ADD THIS LINE TO DEBUG
+    
     const response = await fetch('/api/onboarding', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        ...formData,
+        ...formData, // This should include startingAmount
         riskScore,
         clerkId: user?.id,
         email: user?.emailAddresses[0]?.emailAddress,
       }),
     })
-
+  
     if (response.ok) {
       router.push('/dashboard')
     }
   }
-
   return (
     <div className="min-h-screen bg-black py-12">
       <div className="container mx-auto px-4 max-w-2xl">

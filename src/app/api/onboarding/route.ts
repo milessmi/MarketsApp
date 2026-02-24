@@ -8,22 +8,23 @@ export async function POST(request: Request) {
     const body = await request.json()
     
     const {
-      clerkId,
-      email,
-      riskScore,
-      investmentGoal,
-      timeHorizon,
-      riskReaction,
-      riskAttitude,
-      fluctuationComfort,
-      incomeStability,
-      emergencyFund,
-      investmentPercentage,
-      experienceLevel,
-      previousInvestments,
-      investingMindset,
-      managementPreference,
-    } = body
+        clerkId,
+        email,
+        riskScore,
+        startingAmount, // Add this
+        investmentGoal,
+        timeHorizon,
+        riskReaction,
+        riskAttitude,
+        fluctuationComfort,
+        incomeStability,
+        emergencyFund,
+        investmentPercentage,
+        experienceLevel,
+        previousInvestments,
+        investingMindset,
+        managementPreference,
+      } = body
 
     // Determine portfolio type based on risk score
     let portfolioType = 'BALANCED'
@@ -73,13 +74,13 @@ export async function POST(request: Request) {
 
     // Create initial portfolio with $10,000 paper money
     await prisma.portfolio.create({
-      data: {
-        userId: user.id,
-        name: 'My Portfolio',
-        totalValue: 10000,
-        riskScore: riskScore,
-      },
-    })
+        data: {
+          userId: user.id,
+          name: 'My Portfolio',
+          totalValue: startingAmount || 10000, // Use their choice, fallback to 10000
+          riskScore: riskScore,
+        },
+      })
 
     return NextResponse.json({ success: true, user })
   } catch (error) {
