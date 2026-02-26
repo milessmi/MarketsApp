@@ -10,7 +10,7 @@ export default function Home() {
             Allorca
           </h1>
           <p className="text-2xl text-gray-400 mb-8">
-            Empowering Smarter Investing for Everyone
+            Education-First Investing for USC students 
           </p>
           <div className="flex gap-4 justify-center">
             <Link 
@@ -55,24 +55,59 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-20 text-center">
-          <p className="text-gray-400 mb-8 text-lg">Partnering with USC</p>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
-              <div className="text-5xl font-bold text-green-500">$150K</div>
-              <div className="text-gray-400 mt-2">Seed Funding</div>
-            </div>
-            <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
-              <div className="text-5xl font-bold text-green-500">87</div>
-              <div className="text-gray-400 mt-2">Discipline Score</div>
-            </div>
-            <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
-              <div className="text-5xl font-bold text-green-500">30%</div>
-              <div className="text-gray-400 mt-2">Retention</div>
-            </div>
-          </div>
-        </div>
+{/* Stats */}
+<div className="mt-20 text-center">
+  <p className="text-gray-400 mb-8 text-lg">Built at USC for USC Students</p>
+  <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
+      <div className="text-5xl font-bold text-green-500">30M+</div>
+      <div className="text-gray-400 mt-2">Gen Z Investors</div>
+    </div>
+    <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
+      <div className="text-5xl font-bold text-green-500">4,000+</div>
+      <div className="text-gray-400 mt-2">USC Target Users</div>
+    </div>
+    <div className="bg-gray-900 p-6 rounded-lg border border-green-500/20">
+      <div className="text-5xl font-bold text-green-500">$460B+</div>
+      <div className="text-gray-400 mt-2">Fintech Market</div>
+    </div>
+  </div>
+</div>
+
+{/* Why Allorca for Students */}
+<div className="mt-20 max-w-4xl mx-auto">
+  <div className="bg-gray-900 border border-green-500/20 rounded-xl p-8">
+    <h3 className="text-2xl font-bold text-white mb-6 text-center">
+      Built for Students, By Students
+    </h3>
+    <div className="grid md:grid-cols-2 gap-6 text-gray-300">
+      <div>
+        <h4 className="text-green-500 font-semibold mb-2">🎓 Education-First</h4>
+        <p className="text-sm">
+          Unlike trading apps that encourage risky behavior, Allorca prioritizes learning before investing.
+        </p>
+      </div>
+      <div>
+        <h4 className="text-green-500 font-semibold mb-2">📊 Discipline-Driven</h4>
+        <p className="text-sm">
+          AI-powered guardrails reduce emotional decision-making and build healthy investing habits.
+        </p>
+      </div>
+      <div>
+        <h4 className="text-green-500 font-semibold mb-2">💰 Student-Focused</h4>
+        <p className="text-sm">
+          Designed for low-balance investors starting their journey, not just experienced traders.
+        </p>
+      </div>
+      <div>
+        <h4 className="text-green-500 font-semibold mb-2">🚀 USC Built</h4>
+        <p className="text-sm">
+          Created at USC Stevens Center for Innovation, tested with real USC students.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
         {/* Beta Disclaimer */}
         <div className="mt-20 max-w-4xl mx-auto">

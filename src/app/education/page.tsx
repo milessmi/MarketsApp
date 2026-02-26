@@ -38,17 +38,17 @@ export default async function EducationPage() {
             <Link href="/dashboard">
               <h1 className="text-2xl font-bold text-white">Allorca</h1>
             </Link>
-            <nav className="hidden md:flex gap-6">
-              <Link href="/dashboard" className="text-gray-400 hover:text-white transition">
-                Dashboard
-              </Link>
-              <Link href="/portfolio" className="text-gray-400 hover:text-white transition">
-                Portfolio
-              </Link>
-              <Link href="/education" className="text-green-500 font-semibold">
-                Learn
-              </Link>
-            </nav>
+            <nav className="flex gap-4 md:gap-6 text-sm md:text-base">
+  <Link href="/dashboard" className="text-gray-400 hover:text-white transition">
+    Dashboard
+  </Link>
+  <Link href="/portfolio" className="text-gray-400 hover:text-white transition">
+    Portfolio
+  </Link>
+  <Link href="/education" className="text-green-500 font-semibold">
+    Learn
+  </Link>
+</nav>
           </div>
           <UserButton afterSignOutUrl="/" />
         </div>

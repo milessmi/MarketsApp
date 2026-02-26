@@ -2,6 +2,7 @@ import { auth, currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { PrismaClient } from '@prisma/client'
 import { UserButton } from '@clerk/nextjs'
+import Link from 'next/link'
 
 const prisma = new PrismaClient()
 
@@ -40,17 +41,17 @@ export default async function DashboardPage() {
   <div className="container mx-auto px-4 py-4 flex justify-between items-center">
     <div className="flex items-center gap-8">
       <h1 className="text-2xl font-bold text-white">Allorca</h1>
-      <nav className="hidden md:flex gap-6">
-        <a href="/dashboard" className="text-gray-300 hover:text-white transition">
-          Dashboard
-        </a>
-        <a href="/portfolio" className="text-gray-300 hover:text-white transition">
-          Portfolio
-        </a>
-        <a href="/education" className="text-gray-300 hover:text-white transition">
-          Learn
-        </a>
-      </nav>
+      <nav className="flex gap-4 md:gap-6 text-sm md:text-base">
+  <Link href="/dashboard" className="text-gray-400 hover:text-white transition">
+    Dashboard
+  </Link>
+  <Link href="/portfolio" className="text-gray-400 hover:text-white transition">
+    Portfolio
+  </Link>
+  <Link href="/education" className="text-green-500 font-semibold">
+    Learn
+  </Link>
+</nav>
     </div>
     <UserButton afterSignOutUrl="/" />
   </div>
