@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Allorca
+AI-powered investment education platform for first-time investors.
+Built for USC students and Gen Z users with no finance background. Allorca personalizes your learning path based on your risk profile — so you're not reading the same generic content as everyone else.
+🔗 Live: https://markets-app.vercel.app ← replace with your actual URL
 
-## Getting Started
+What It Does
+Most investment education platforms dump the same content on every user. Allorca is different — it starts by understanding you.
 
-First, run the development server:
+Onboarding survey — 20 data points collected on your financial goals, risk tolerance, and experience level
+Risk scoring algorithm — processes your responses and assigns you one of three investor profiles
+Personalized curriculum — your profile unlocks a specific learning path across 15+ educational modules
+Progress tracking — quiz system tracks where you are and what you've completed
+AI insights (in progress) — Claude API integration for personalized portfolio commentary
 
-```bash
+
+Tech Stack
+LayerTechnologyFrontendNext.js 14, TypeScript, Tailwind CSSBackendNext.js API routesDatabaseSupabase (PostgreSQL)ORMPrismaAuthSupabase AuthAIClaude API (Anthropic)DeploymentVercel + GitHub CI/CD
+
+Features
+
+Risk scoring engine — onboarding survey data processed through a custom algorithm to dynamically route users into Conservative, Moderate, or Aggressive investor profiles
+Authentication — full user auth via Supabase, session management across routes
+Educational quiz system — 15+ modules with progress tracking persisted to database
+Mobile-responsive UI — fully responsive across devices
+Continuous deployment — every push to main auto-deploys via Vercel
+
+
+Running Locally
+bash# Clone the repo
+git clone https://github.com/milessmi/Allorca_.git
+cd Allorca_
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Fill in your Supabase URL, anon key, and Anthropic API key
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Environment Variables
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+ANTHROPIC_API_KEY=
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+About
+Allorca is being developed through USC's Stevens Center for Innovation and is a candidate for the NSF Startup Grant. Initial user base targets non-finance USC students — currently at 50+ beta users.
+Built by Miles Smith — SWE Intern @ Luma Health, USC Human Biology + AI Minor.
