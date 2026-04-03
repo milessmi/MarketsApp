@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client'
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { getCoursesForUser } from '@/lib/courses'
+import AITutor from '@/components/AITutor'
 
 const prisma = new PrismaClient()
 
@@ -65,19 +66,7 @@ export default async function EducationPage() {
           </p>
         </div>
 
-        {/* AI Recommendation Message */}
-        <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-xl p-6 mb-8">
-          <div className="flex items-start gap-4">
-            <div className="text-3xl">🤖</div>
-            <div>
-              <h3 className="text-white font-bold mb-2">AI-Curated Just For You</h3>
-              <p className="text-gray-300 text-sm">
-                Based on your survey responses, we've identified the most relevant courses to accelerate your investing journey. 
-                Start with the recommended courses below, then explore the full catalog.
-              </p>
-            </div>
-          </div>
-        </div>
+      <AITutor />
 
         {/* Recommended Courses */}
         <div className="mb-12">
