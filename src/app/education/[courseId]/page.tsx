@@ -7,6 +7,7 @@ import { getCourseById } from '@/lib/courses'
 import InteractiveQuiz from '@/components/InteractiveQuiz'
 import ProgressTracker from '@/components/ProgressTracker'
 import LessonContent from '@/components/LessonContent'
+import CourseProgress from '@/components/CourseProgress'
 
 const prisma = new PrismaClient()
 
@@ -94,7 +95,11 @@ export default async function CoursePage(props: PageProps) {
         </div>
 
         {/* Progress Tracker */}
-        <ProgressTracker current={completedLessons} total={totalLessons} />
+        <CourseProgress
+        courseId={course.id}
+        courseName={course.title}
+        lessons={course.lessons}
+        />
 
         {/* Lessons */}
         <div className="space-y-8">
