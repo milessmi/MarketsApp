@@ -31,6 +31,12 @@ Avoid jargon unless you explain it. Never give specific stock picks or financial
 `
 
   if (mode === 'outline') {
+    // Return cached roadmap if it exists
+    if (dbUser.roadmapCache) {
+      return NextResponse.json({ outline: dbUser.roadmapCache })
+    }
+
+    // Generate new roadmap and cache it
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1000,
@@ -54,6 +60,13 @@ Return ONLY the JSON array, no markdown, no code blocks, no other text. Just the
     try {
       const cleaned = text.replace(/```json|```/g, '').trim()
       const outline = JSON.parse(cleaned)
+
+      // Save to database so next load is instant
+      await prisma.user.update({
+        where: { clerkId: userId },
+        data: { roadmapCache: outline },
+      })
+
       return NextResponse.json({ outline })
     } catch {
       console.error('Failed to parse outline:', text)
